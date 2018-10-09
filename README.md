@@ -8,7 +8,7 @@ I wrote the simulation of the Poisson myself. To simulate the (discrete) determi
 
 https://github.com/mbp28/determinantal-point-processes
 
-It should be noted that there are a number of repositories that do simulate (discrete) determinantal point process in Python, including:
+It should be noted that there are a number of repositories with Python code that simulate (discrete) determinantal point process, including:
 
 https://github.com/javiergonzalezh/dpp
 
