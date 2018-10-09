@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 lambda0=50; #intensity (ie mean density) of the Poisson process
 
 #choose kernel
-choiceKernel=2;#1 for Gaussian (ie squared exponetial ); 2 for Cauchy
+choiceKernel=1;#1 for Gaussian (ie squared exponetial ); 2 for Cauchy
 sigma=1;# parameter for Gaussian and Cauchy kernel
 alpha=1;# parameter for Cauchy kernel
 
@@ -51,12 +51,13 @@ rrDiffSquared=(xxDiff**2+yyDiff**2);
 if choiceKernel==1:
     #Gaussian/squared exponential kernel
     L=lambda0*np.exp(-(rrDiffSquared)/sigma**2);
-else:
-    if choiceKernel==2:
+    
+elif choiceKernel==2:
         #Cauchy kernel
-        L=lambda0/(1+rrDiffSquared/sigma**2)**(alpha+1/2);    
-    else:        
-        raise Exception('choiceKernel has to be equal to 1 or 2.');
+    L=lambda0/(1+rrDiffSquared/sigma**2)**(alpha+1/2); 
+        
+else:        
+    raise Exception('choiceKernel has to be equal to 1 or 2.');
      
 # END-- CREATE L matrix -- # END
 
