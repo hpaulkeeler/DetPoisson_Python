@@ -86,8 +86,10 @@ for ii in range(numbPointsDPP):
     jj = (np.abs(spaceV[indexCurrent, :]) > 0).argmax() 
     columnVj = spaceV[:, jj];
     
-    #Update matrix V
-    spaceV = orth(spaceV- (np.outer(columnVj,(spaceV[indexCurrent, :] / columnVj[indexCurrent])))); 
+    #Update matrix V by removing Vj component from the space
+    spaceV = spaceV- (np.outer(columnVj,(spaceV[indexCurrent, :] / columnVj[indexCurrent]))); 
+    #Orthonormalize (using singular value decomposition - could also use qr)
+    spaceV = orth(spaceV);
 
 #Loop finished   
 indexDPP.sort(); #sort points
