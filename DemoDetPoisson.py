@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 lambda0=50; #intensity (ie mean density) of the Poisson process
 
 #choose kernel
-choiceKernel=1;#1 for Gaussian (ie squared exponetial ); 2 for Cauchy
+choiceKernel=2;#1 for Gaussian (ie squared exponetial ); 2 for Cauchy
 sigma=1;# parameter for Gaussian and Cauchy kernel
 alpha=1;# parameter for Cauchy kernel
 
@@ -52,9 +52,12 @@ if choiceKernel==1:
     #Gaussian/squared exponential kernel
     L=lambda0*np.exp(-(rrDiffSquared)/sigma**2);
 else:
-    #Cauchy kernel
-    L=lambda0/(1+rrDiffSquared/sigma**2)**(alpha+1/2);
-
+    if choiceKernel==2:
+        #Cauchy kernel
+        L=lambda0/(1+rrDiffSquared/sigma**2)**(alpha+1/2);    
+    else:        
+        raise Exception('choiceKernel has to be equal to 1 or 2.');
+     
 # END-- CREATE L matrix -- # END
 
 # START Simulating/sampling DPP
@@ -63,21 +66,26 @@ eigenValuesL, eigenVectorsL=np.linalg.eig(L);
 eigenValuesK = eigenValuesL / (1+eigenValuesL); #eigenvalues of K
 indexEig = (np.random.rand(sizeL) < eigenValuesK );#Bernoulli trials
 
+#number of points in the DPP realization
 numbPointsDPP= np.sum(indexEig);  #number of points 
+#retrieve eigenvectors corresponding to successful Bernoulli trials
 spaceV = eigenVectorsL[:, indexEig]; #subspace V
-indexDPP=list(); #list for index
+indexDPP=list(); #list for index final DPP configuration
 
+#Loop through for all points
 for ii in range(numbPointsDPP):
     #Compute probabilities for each point i    
     Prob_i = np.sum(spaceV**2, axis=1);#sum across rows
-    Prob_i = np.cumsum(Prob_i/ np.sum(Prob_i)) # #normalize
+    Prob_i = np.cumsum(Prob_i/ np.sum(Prob_i)); #normalize
     
     #Choose a new point using PMF Prob_i  
     indexCurrent=(np.random.rand() <= Prob_i).argmax();
     indexDPP.append(indexCurrent);    
+    
     #Choose a vector to eliminate
     jj = (np.abs(spaceV[indexCurrent, :]) > 0).argmax() 
     columnVj = spaceV[:, jj];
+    
     #Update matrix V
     spaceV = orth(spaceV- (np.outer(columnVj,(spaceV[indexCurrent, :] / columnVj[indexCurrent])))); 
    
@@ -85,7 +93,7 @@ indexDPP.sort(); #sort points
 #END - Simulating/sampling DPP - END
 
 #Plotting 
-plt.scatter(xx,yy, edgecolor='k', facecolor='none', alpha=0.5 );
+plt.scatter(xx,yy, edgecolor='k', facecolor='none');
 plt.xlabel("x"); plt.ylabel("y");
 #random color vector
 vectorColor=(np.asscalar(np.random.rand(1)), np.asscalar(np.random.rand(1)), np.asscalar(np.random.rand(1)));
