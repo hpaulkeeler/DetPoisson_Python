@@ -17,7 +17,6 @@
 #import relevant libraries
 import numpy as np
 from scipy.linalg import orth
-import scipy.stats
 import matplotlib.pyplot as plt
 
 #START -- Parameters -- START
