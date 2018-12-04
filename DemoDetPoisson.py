@@ -36,9 +36,9 @@ areaTotal=xDelta*yDelta; #area of rectangle
 #END -- Parameters -- END
 
 #Simulate a Poisson point process
-numbPoints = scipy.stats.poisson(lambda0*areaTotal).rvs();#Poisson number of points
-xx = scipy.stats.uniform.rvs(0,xDelta,((numbPoints,1)))+xMin;#x coordinates of Poisson points
-yy = scipy.stats.uniform.rvs(0,yDelta,((numbPoints,1)))+yMin;#y coordinates of Poisson points
+numbPoints = np.random.poisson(lambda0*areaTotal);#Poisson number of points
+xx = np.random.uniform(xMin,xMax,numbPoints);#x coordinates of Poisson points
+yy = np.random.uniform(yMin,yMax,numbPoints);#y coordinates of Poisson points
 
 # START -- CREATE L matrix -- START 
 sizeL=numbPoints;
