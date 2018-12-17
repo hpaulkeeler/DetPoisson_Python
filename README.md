@@ -1,6 +1,8 @@
 # DetPoissonPython
 
-Randomly simulates a determinantally-thinned Poisson point process on a rectangle.
+Randomly simulates a determinantally-thinned Poisson point process on a rectangle. I believe this is a new type of point process, originally proposed by Blaszczyszyn and Keeler in the paper[1]: 
+
+https://arxiv.org/abs/1810.08672
 
 A determinantally-thinned (Poisson) point process is essentially a discrete determinantal point process whose underlying state space is a single realization of a (Poisson) point process defined on some bounded continuous space. This is a repulsive point process, where the repulsion depends on the kernel and average density of points. For more details, see the paper by Blaszczyszyn and Keeler[1].
 
