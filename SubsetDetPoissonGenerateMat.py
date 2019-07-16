@@ -78,7 +78,7 @@ indexListSub=[np.array(np.concatenate(indexSubTemp[ss][0])-1,dtype=int) for ss i
 
 ###END Load up values from MATLAB .mat file END###
 
-###START Load up values from MATLAB SubsetFitParam.npz file START###
+###START Load up values from Python SubsetFitParam.npz file START###
 
 fileVarsFitted=np.load('SubsetFitParam.npz'); #load file
 
@@ -91,7 +91,7 @@ choiceModelFitted=fileVarsFitted['choiceModelFitted'];
 booleOptSigma=fileVarsFitted['booleOptSigma'];
 choiceKernel=fileVarsFitted['choiceKernel'];
 
-###END Load up values from MATLAB SubsetFitParam.npz file END###
+###END Load up values from Python SubsetFitParam.npz file END###
 
 if (numbSim+T>numbTrain):
     raise SystemExit('Need to create more realziations with SubsetGenerate.m');
