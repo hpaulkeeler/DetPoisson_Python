@@ -139,8 +139,8 @@ resultsOpt=minimize(funMin,thetaGuess, method='BFGS',options={'disp': True});
 thetaMax=resultsOpt.x; 
 
 if booleOptSigma:
-    sigma=thetaMax[-1:]; #retrive sigma values from theta
-    thetaMax=thetaMax[:-1];
+    sigma=thetaMax[-1:]; #retrieve sigma values from theta vector
+    thetaMax=thetaMax[:-1]; 
 
 print('sigma = ', sigma);    
 print('thetaMax', thetaMax);
