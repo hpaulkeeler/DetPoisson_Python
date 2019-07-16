@@ -108,7 +108,7 @@ numbSub=np.zeros(numbSim); #number of points in subset point process
 numbDPP=np.zeros(numbSim); #number of points in detrminantal point process
 
 for ss in range(numbSim):
-    tt=ttValues[ss];
+    tt=ttValues[ss]; 
     xxPoisson=ppXYPoisson[tt][0];
     yyPoisson=ppXYPoisson[tt][1];
     indexSub=indexListSub[tt]; #index for sub point process    
@@ -124,7 +124,9 @@ for ss in range(numbSim):
     numbDPP[ss]=indexDPP.size;
     
 #x/y values of subset point process
-xxSub=xxPoisson[indexDPP]; yySub=yyPoisson[indexDPP];
+xxSub=xxPoisson[indexSub]; yySub=yyPoisson[indexSub];
+#x/y values of determinantal point process
+xxDPP=xxPoisson[indexDPP]; yyDPP=yyPoisson[indexDPP];
 
 lambdaEmpDPP=np.mean(numbDPP)/areaSample #empirical intensity of DPP
 print('lambdaEmpDPP = ',lambdaEmpDPP);
@@ -132,11 +134,19 @@ lambdaEmpSub=np.mean(numbSub)/areaSample #empirical intensity of subset PP
 print('lambdaEmpSub = ',lambdaEmpSub);
 
 #Plotting 
+markerSize=50; #marker size of markers colors
 #Plot Poisson point process
-plt.scatter(xxPoisson,yyPoisson, edgecolor='k', facecolor='none');
-plt.xlabel("x"); plt.ylabel("y");
-#random color vector
-vectorColor=(np.asscalar(np.random.rand(1)), np.asscalar(np.random.rand(1)), np.asscalar(np.random.rand(1)));
+plt.plot(xxPoisson,yyPoisson,'ko',markerfacecolor="None",markersize=markerSize/4);
+#Plot subset point process
+plt.plot(xxSub,yySub,'rx',markersize=markerSize/8);
 #Plot determinantally-thinned Poisson point process
-plt.scatter(xxSub,yySub,edgecolor='none',facecolor=vectorColor);
+plt.plot(xxDPP,yyDPP,'b+',markersize=markerSize/4);
+
+
+plt.xlabel('x'); plt.ylabel('y');
+plt.legend(('Poisson Process',labelModel,'Determinantal Poisson'));
+plt.axis('equal');
+#plt.axis('off');
+
+
 
