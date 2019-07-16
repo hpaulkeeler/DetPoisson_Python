@@ -12,6 +12,9 @@
 # https://github.com/hpaulkeeler/DetPoisson_MATLAB
 # 
 # The fitting paramters are stored locally in the file SubsetFitParam.npz 
+#
+# This Python code was originally written by H.P. Keeler in MATLAB; see 
+# https://github.com/hpaulkeeler/DetPoisson_MATLAB
 # 
 # Author: H.P. Keeler, Inria/ENS, Paris, and University of Melbourne,
 # Melbourne, 2019

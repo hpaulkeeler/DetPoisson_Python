@@ -1,3 +1,47 @@
+# function funNeighbourL(xx,yy,lambda0,choiceKernel,sigma,theta,N,M), returns L
+# This function file creates an L(-ensemble-)matrix, as detailed in the
+# paper by Blaszczyszyn and Keeler[1](Section IV).
+#
+# The quality features or covariates (q_x in the above paper) are based on
+# the nearest neighbour distances. The similiarirty matrix (S in the paper)
+# which creates replusion among the points, can be formed from either
+# Gaussian or Cauchy kernel function.
+#
+# This Python code was originally written by H.P. Keeler in MATLAB; see 
+# https://github.com/hpaulkeeler/DetPoisson_MATLAB
+#
+# INPUTS:
+# xx and yy are the x and y values of the underlying discrete state space,
+# which is usually a realization of a point process on a bounded continuous
+# 2-D space such as a square or a disk.
+#
+# lambda0 is the point intensity/density (ie average number of points per
+# unit area) of the point process, which is used to rescale the distances.
+#
+# choiceKernel is a variable that takes value 1 (for Gaussian) or 2 (for
+# Cauchy) to select the kernel function.
+#
+# sigma is a parameter of kernel function.
+#
+# theta is a fitting parameters for the quality features/covariates.
+#
+# N is the number of neighbouring points.
+#
+# M is the number of distances between neighbour points. M is optional, but
+# when used, M must be equal to zero or N-1.
+#
+# OUTPUTS:
+# An L-ensemble kernel matrix for a determinantal point process on a
+# discrete space; see [1] for details.
+#
+# Author: H.P. Keeler, Inria/ENS, Paris, and University of Melbourne,
+# Melbourne, 2019.
+#
+# References:
+# [1] Blaszczyszyn and Keeler, Determinantal thinning of point processes
+# with network learning applications, 2018.
+
+
 import numpy as np; #NumPy package for arrays, random number generation, etc
 import matplotlib.pyplot as plt #for plotting
 from scipy.io import loadmat #for reading mat files

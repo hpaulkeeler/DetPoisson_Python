@@ -6,6 +6,9 @@
 # in the paper by Shirai and Takahashi[3]; see Theorem 6.5 and 
 # Corolloary 6.6 in [3].
 #
+# This Python code was originally written by H.P. Keeler in MATLAB; see 
+# https://github.com/hpaulkeeler/DetPoisson_MATLAB
+#
 # INPUTS:
 # L = A square L(-matrix-)kernel, which must be (semi-)positive-definite. 
 # indexPalm = an index set for the conditioned point, where all the points 
@@ -15,7 +18,7 @@
 # matrix with dimension of size(L,1)-length(indexPalm).
 #
 # Author: H.P. Keeler, Inria/ENS, Paris, and University of Melbourne,
-# Melbourne, 2018.
+# Melbourne, 2019.
 #
 # References:
 # [1] Blaszczyszyn and Keeler, "Determinantal thinning of point processes 
@@ -24,8 +27,6 @@
 # Pfaffian analogs", 2005
 # [3] Shirai and Takahashi, "Random point fields associated with certain 
 # Fredholm determinants I -- fermion, poisson and boson point", 2003.
-
-# Author: H. Paul Keeler, 2019.
 
 import numpy as np; #NumPy package for arrays, random number generation, etc
 import matplotlib.pyplot as plt #for plotting
