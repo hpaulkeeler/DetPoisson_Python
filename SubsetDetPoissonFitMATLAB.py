@@ -3,11 +3,13 @@
 # paper by Blaszczyszyn and Keeler[1], which is essentially the method 
 # developed by Kulesza and Taskar[2] in Section 4.1.1.
 #
-# This is the second file (of three files) to run to reproduce the results
-# presented in the paper by Blaszczyszyn and Keeler[1].
+# This is the second file (of three files) to run to reproduce results similar 
+# to those presented in the paper by Blaszczyszyn and Keeler[1].
 #
 # The data used for fitting (or training) is stored in the file Subset.mat, 
-# which is generated with the MATLAB file SubsetGenerate.m.
+# which is generated with the MATLAB file SubsetGenerate.m; see 
+#
+# https://github.com/hpaulkeeler/DetPoisson_MATLAB
 # 
 # The fitting paramters are stored locally in the file SubsetFitParam.npz 
 # 

@@ -1,20 +1,15 @@
 # This simulates determinatally-thinned point processes that have been 
 # fitted to thinned-point process based on the method outlined in the paper 
 # by Blaszczyszyn and Keeler[1], which is essentially the method developed 
-# by Kulesza and Taskar[2]. It then gathers empirical estimates of nearest
-# neighbour distributions and contact distributions; for details see,
-# the books by Chiu, Stoyan, Kendall, and Mecke[3] or Baddeley, Rubak and
-# Turner[4]. It also calculates these distributions using determinant
-# equations by simulating the underlying Poisson point process, and not the
-# determinatally-thinned point process; see Blaszczyszyn and Keeler[1],
-# Section III. Part of this is based on the (reduced) Palm distribution of
-# determinantal point processes derived by Shirai and Takahashi[5]
+# by Kulesza and Taskar[2]. 
 #
-# This is the third file (of three files) to run to reproduce the results
-# presented in the paper by Blaszczyszyn and Keeler[1].
+# This is the third file (of three files) to run to reproduce results similar 
+# to those presented in the paper by Blaszczyszyn and Keeler[1].
 #
 # The data used for fitting (or training) is stored in the file Subset.mat,
-# which is generated with the MATLAB file SubsetGenerate.m.
+# which is generated with the MATLAB file SubsetGenerate.m; see 
+#
+# https://github.com/hpaulkeeler/DetPoisson_MATLAB
 #
 # The fitting paramters are stored locally in the file SubsetFitParam.npz
 #
@@ -132,8 +127,7 @@ lambdaEmpDPP=np.mean(numbDPP)/areaSample #empirical intensity of DPP
 print('lambdaEmpDPP = ',lambdaEmpDPP);
 lambdaEmpSub=np.mean(numbSub)/areaSample #empirical intensity of subset PP
 print('lambdaEmpSub = ',lambdaEmpSub);
- 
-    
+
 #Plotting 
 #Plot Poisson point process
 plt.scatter(xxPoisson,yyPoisson, edgecolor='k', facecolor='none');
