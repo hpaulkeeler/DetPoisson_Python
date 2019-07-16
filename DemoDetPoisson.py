@@ -70,7 +70,7 @@ indexEig = (np.random.rand(sizeL) < eigenValuesK );#Bernoulli trials
 numbPointsDPP= np.sum(indexEig);  #number of points 
 #retrieve eigenvectors corresponding to successful Bernoulli trials
 spaceV = eigenVectorsL[:, indexEig]; #subspace V
-indexDPP=list(); #list for index final DPP configuration
+indexDPP=np.zeros(numbPointsDPP,dtype='int'); #index for final DPP configuration
 
 #Loop through for all points
 for ii in range(numbPointsDPP):
@@ -80,7 +80,7 @@ for ii in range(numbPointsDPP):
     
     #Choose a new point using PMF Prob_i  
     indexCurrent=(np.random.rand() <= Prob_i).argmax();
-    indexDPP.append(indexCurrent);    
+    indexDPP[ii]=indexCurrent;    
     
     #Choose a vector to eliminate
     jj = (np.abs(spaceV[indexCurrent, :]) > 0).argmax() 
@@ -92,7 +92,7 @@ for ii in range(numbPointsDPP):
     spaceV = orth(spaceV);
 
 #Loop finished   
-indexDPP.sort(); #sort points
+indexDPP=np.sort(indexDPP); #sort points
 #END - Simulating/sampling DPP - END
 
 #Plotting 
