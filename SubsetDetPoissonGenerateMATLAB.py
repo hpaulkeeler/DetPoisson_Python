@@ -129,7 +129,10 @@ for ss in range(numbSim):
 xxSub=xxPoisson[indexDPP]; yySub=yyPoisson[indexDPP];
 
 lambdaEmpDPP=np.mean(numbDPP)/areaSample #empirical intensity of DPP
+print('lambdaEmpDPP = ',lambdaEmpDPP);
 lambdaEmpSub=np.mean(numbSub)/areaSample #empirical intensity of subset PP
+print('lambdaEmpSub = ',lambdaEmpSub);
+ 
     
 #Plotting 
 #Plot Poisson point process
