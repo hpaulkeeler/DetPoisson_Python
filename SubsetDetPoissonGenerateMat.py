@@ -79,9 +79,7 @@ indexListSub=[np.array(np.concatenate(indexSubTemp[ss][0])-1,dtype=int) for ss i
 ###END Load up values from MATLAB .mat file END###
 
 ###START Load up values from Python SubsetFitParam.npz file START###
-
 fileVarsFitted=np.load('SubsetFitParam.npz'); #load file
-
 thetaMax=fileVarsFitted['thetaMax'];
 T=fileVarsFitted['T'];
 sigma=fileVarsFitted['sigma'];
@@ -90,11 +88,10 @@ M=fileVarsFitted['M'];
 choiceModelFitted=fileVarsFitted['choiceModelFitted'];
 booleOptSigma=fileVarsFitted['booleOptSigma'];
 choiceKernel=fileVarsFitted['choiceKernel'];
-
 ###END Load up values from Python SubsetFitParam.npz file END###
 
 if (numbSim+T>numbTrain):
-    raise SystemExit('Need to create more realziations with SubsetGenerate.m');
+    raise SystemExit('Need to create more realizations with SubsetGenerate.m');
 else:
     #Look at unused realizations (ie the ones not used for fitting)
     #select a random subset of unused realizations
@@ -123,17 +120,17 @@ for ss in range(numbSim):
     indexDPP=funSimSimpleDPP(eigenVectorsL,eigenValuesL);
     numbDPP[ss]=indexDPP.size;
     
-#x/y values of subset point process
-xxSub=xxPoisson[indexSub]; yySub=yyPoisson[indexSub];
-#x/y values of determinantal point process
-xxDPP=xxPoisson[indexDPP]; yyDPP=yyPoisson[indexDPP];
-
 lambdaEmpDPP=np.mean(numbDPP)/areaSample #empirical intensity of DPP
 print('lambdaEmpDPP = ',lambdaEmpDPP);
 lambdaEmpSub=np.mean(numbSub)/areaSample #empirical intensity of subset PP
 print('lambdaEmpSub = ',lambdaEmpSub);
 
 #Plotting 
+#x/y values of subset point process
+xxSub=xxPoisson[indexSub]; yySub=yyPoisson[indexSub];
+#x/y values of determinantal point process
+xxDPP=xxPoisson[indexDPP]; yyDPP=yyPoisson[indexDPP];
+
 markerSize=50; #marker size of markers colors
 #Plot Poisson point process
 plt.plot(xxPoisson,yyPoisson,'ko',markerfacecolor="None",markersize=markerSize/4);
