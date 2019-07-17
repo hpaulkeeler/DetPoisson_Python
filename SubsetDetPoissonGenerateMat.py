@@ -132,13 +132,13 @@ xxSub=xxPoisson[indexSub]; yySub=yyPoisson[indexSub];
 #x/y values of determinantal point process
 xxDPP=xxPoisson[indexDPP]; yyDPP=yyPoisson[indexDPP];
 
-markerSize=50; #marker size of markers colors
+markerSize=12; #marker size for the Poisson points
 #Plot Poisson point process
-plt.plot(xxPoisson,yyPoisson,'ko',markerfacecolor="None",markersize=markerSize/4);
+plt.plot(xxPoisson,yyPoisson,'ko',markerfacecolor="None",markersize=markerSize);
 #Plot subset point process
-plt.plot(xxSub,yySub,'rx',markersize=markerSize/8);
+plt.plot(xxSub,yySub,'rx',markersize=markerSize/2);
 #Plot determinantally-thinned Poisson point process
-plt.plot(xxDPP,yyDPP,'b+',markersize=markerSize/4);
+plt.plot(xxDPP,yyDPP,'b+',markersize=markerSize);
 
 
 plt.xlabel('x'); plt.ylabel('y');
