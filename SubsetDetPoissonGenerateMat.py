@@ -13,7 +13,7 @@
 #
 # The fitting paramters are stored locally in the file SubsetFitParam.npz
 #
-# This Python code was originally written by H.P. Keeler in MATLAB; see 
+# This code was originally written by H.P. Keeler in MATLAB; see 
 # https://github.com/hpaulkeeler/DetPoisson_MATLAB
 #
 # REQUIREMENTS:
@@ -45,6 +45,7 @@ from scipy.stats import poisson #for the Poisson probability mass function
 from funNeighbourL import funNeighbourL
 from funSimSimpleDPP import funSimSimpleDPP
 
+
 plt.close("all"); # close all figures
 
 numbSim=10**3;
@@ -63,17 +64,17 @@ labelModel=str(dataMATLAB['labelModel'][0]); #name/label of model
 booleDisk=np.int(dataMATLAB['booleDisk'])!=0; #if simulation window is disk
 #x/y values of all underlying Poisson PPs
 ppStructTemp=dataMATLAB['ppStructPoisson']; 
-numbTrain=ppStructTemp.size; #total number of simulations
+numbSimTotal=ppStructTemp.size; #total number of simulations 
 #extract data for underlying Poisson point processes
-xxList=[np.concatenate(ppStructTemp[ss][0][0]) for ss in range(numbTrain)];
-yyList=[np.concatenate(ppStructTemp[ss][0][1]) for ss in range(numbTrain)];
-ppXYPoisson=[(xxList[ss],yyList[ss])for ss in range(numbTrain)];
+xxList=[np.concatenate(ppStructTemp[ss][0][0]) for ss in range(numbSimTotal)];
+yyList=[np.concatenate(ppStructTemp[ss][0][1]) for ss in range(numbSimTotal)];
+ppXYPoisson=[(xxList[ss],yyList[ss])for ss in range(numbSimTotal)];
 
-nList=[np.int(ppStructTemp[ss][0][2]) for ss in range(numbTrain)];
+nList=[np.int(ppStructTemp[ss][0][2]) for ss in range(numbSimTotal)];
 nArray=np.array(nList);
 #extract data for subset point processes
 indexSubTemp=dataMATLAB['indexCellSub'];  
-indexListSub=[np.array(np.concatenate(indexSubTemp[ss][0])-1,dtype=int) for ss in range(numbTrain)];
+indexListSub=[np.array(np.concatenate(indexSubTemp[ss][0])-1,dtype=int) for ss in range(numbSimTotal)];
 #NOTE: need to subtract one from MATLAB indices as Python indexing starts at zero.
 
 ###END Load up values from MATLAB .mat file END###
@@ -90,7 +91,7 @@ booleOptSigma=fileVarsFitted['booleOptSigma'];
 choiceKernel=fileVarsFitted['choiceKernel'];
 ###END Load up values from Python SubsetFitParam.npz file END###
 
-if (numbSim+T>numbTrain):
+if (numbSim+T>numbSimTotal):
     raise SystemExit('Need to create more realizations with SubsetGenerate.m');
 else:
     #Look at unused realizations (ie the ones not used for fitting)
