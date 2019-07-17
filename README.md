@@ -8,7 +8,9 @@ A determinantally-thinned (Poisson) point process is essentially a discrete dete
 
 An obvious question is whether a determinantally-thinned Poisson point process is *also* a determinantal point process? The answer, we believe, is no, but it's from obvious. 
 
-I added the code for simulating a Poisson point process, which was the easy part. To simulate the (discrete) determinantal point process, I modified the code in sample_dpp.py from this repository:
+If you use this code in a publication, please cite the aforementioned paper by Blaszczyszyn and Keeler[1]. Unless stated otherwise, H.P. Keeler wrote this Python code, which is based on MATLAB also written by H.P. Keeler. For further details, see https://github.com/hpaulkeeler/DetPoisson_MATLAB
+
+To simulate the (discrete) determinantal point process, I modified the code in sample_dpp.py from this repository:
 
 https://github.com/mbp28/determinantal-point-processes
 
