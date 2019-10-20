@@ -101,7 +101,7 @@ else:
     ttValues=ttValuesPerm[np.arange(numbSim)];
 
 
-#Initiate variables for collecting statistics
+#initialize  variables for collecting statistics
 numbSub=np.zeros(numbSim); #number of points in subset point process
 numbDPP=np.zeros(numbSim); #number of points in detrminantal point process
 

@@ -110,7 +110,7 @@ def funLikelihood_data(T,ppXYPoisson,indexListSub,choiceKernel,lambda0,sigma,the
         #sets sigma to one of the theta parameters to optimize
         sigma=theta[-1:]; 
         theta=theta[:-1];     
-    #initiate vector    
+    #initialize  vector    
     logLikelihoodVector=np.zeros(T);
 
     #Loop through all training/learning samples
