@@ -79,11 +79,11 @@ for ii in range(numbPointsDPP):
     Prob_i = np.cumsum(Prob_i/ np.sum(Prob_i)); #normalize
     
     #Choose a new point using PMF Prob_i  
-    indexCurrent=(np.random.rand() <= Prob_i).argmax();
+    indexCurrent=(np.random.rand() <= Prob_i).argmax(); 
     indexDPP[ii]=indexCurrent;    
     
     #Choose a vector to eliminate
-    jj = (np.abs(spaceV[indexCurrent, :]) > 0).argmax() 
+    jj = (np.abs(spaceV[indexCurrent, :]) > 0).argmax()  #nonzero elements
     columnVj = spaceV[:, jj];
     
     #Update matrix V by removing Vj component from the space
