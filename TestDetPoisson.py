@@ -21,8 +21,8 @@ import numpy as np
 from funSimSimpleLDPP import funSimSimpleLDPP
 from funLtoK import funLtoK
 
-#set random seed for reproducibility
-np.random.seed(1);
+##set random seed for reproducibility
+#np.random.seed(1);
 
 numbSim=10**4; #number of simulations
 
