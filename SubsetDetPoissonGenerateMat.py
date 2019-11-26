@@ -43,7 +43,7 @@ from scipy.optimize import minimize #For optimizing
 from scipy.stats import poisson #for the Poisson probability mass function
 
 from funNeighbourL import funNeighbourL
-from funSimSimpleDPP import funSimSimpleDPP
+from funSimSimpleLDPP import funSimSimpleLDPP
 
 
 plt.close("all"); # close all figures
@@ -118,7 +118,7 @@ for ss in range(numbSim):
     eigenValuesL, eigenVectorsL=np.linalg.eig(L);
         
     #Simulate next DPP generation
-    indexDPP=funSimSimpleDPP(eigenVectorsL,eigenValuesL);
+    indexDPP=funSimSimpleLDPP(eigenVectorsL,eigenValuesL);
     numbDPP[ss]=indexDPP.size;
     
 lambdaEmpDPP=np.mean(numbDPP)/areaSample #empirical intensity of DPP

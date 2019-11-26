@@ -18,7 +18,7 @@
 #import relevant libraries
 import numpy as np
 
-from funSimSimpleDPP import funSimSimpleDPP
+from funSimSimpleLDPP import funSimSimpleLDPP
 from funLtoK import funLtoK
 
 #set random seed for reproducibility
@@ -78,7 +78,7 @@ probTestEmp=0; #initialize variables
 #loop through for each simulation
 for ss in range(numbSim):
     #run determinantal simuation
-    indexDPP=funSimSimpleDPP(eigenVectorsL,eigenValuesL); #returns index 
+    indexDPP=funSimSimpleLDPP(eigenVectorsL,eigenValuesL); #returns index 
     probX_i_Emp[indexDPP]=probX_i_Emp[indexDPP]+1;        
     
     countTemp=0; #initialize count
