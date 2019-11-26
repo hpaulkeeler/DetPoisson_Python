@@ -69,7 +69,7 @@ else:
 
 #START Testing DPP simulation START#
 #Eigen decomposition
-eigenValuesL, eigenVectorsL=np.linalg.eig(L);
+eigenValL, eigenVectL=np.linalg.eig(L);
 
 #run simulations with tests
 probX_i_Emp=np.zeros(numbPoints); #initialize variables
@@ -78,7 +78,7 @@ probTestEmp=0; #initialize variables
 #loop through for each simulation
 for ss in range(numbSim):
     #run determinantal simuation
-    indexDPP=funSimSimpleLDPP(eigenVectorsL,eigenValuesL); #returns index 
+    indexDPP=funSimSimpleLDPP(eigenVectL,eigenValL); #returns index 
     probX_i_Emp[indexDPP]=probX_i_Emp[indexDPP]+1;        
     
     countTemp=0; #initialize count

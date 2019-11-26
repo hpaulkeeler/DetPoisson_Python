@@ -1,4 +1,4 @@
-# funSimSimpleLDPP(eigenVectL,eigenValL), returns indexConfig
+# funSimSimpleDPP(eigenVectL,eigenValL), returns indexConfig
 # This function simulates a determinantal point process (DPP) provided a
 # L matrix. It was used to produce the results in the paper by Blaszczyszyn 
 # and Keeler[1].
@@ -32,7 +32,7 @@
 import numpy as np
 from scipy.linalg import orth
 
-def funSimSimpleLDPP(eigenVectL,eigenValL):
+def funSimSimpleDPP(eigenVectL,eigenValL):
     
     #START - Sampling/simulating DPP - START
     # START Simulating/sampling DPP
@@ -52,22 +52,22 @@ def funSimSimpleLDPP(eigenVectL,eigenValL):
         Prob_i = np.cumsum(Prob_i/ np.sum(Prob_i)); #normalize
         
         #Choose a new point using PMF Prob_i  
-        uRand=np.random.rand(1); 
-        indexCurrent=(uRand<= Prob_i).argmax();
+        indexCurrent=(np.random.rand() <= Prob_i).argmax();
         indexDPP[ii]=indexCurrent;    
-        
-        if ii <numbPointsDPP-1: 
-            #Choose a vector to eliminate
-            jj = (np.abs(spaceV[indexCurrent, :]) > 0).argmax() 
-            columnVj = spaceV[:, jj];    
-            spaceV=np.delete(spaceV,jj,1) #remove column
-            
-            #Update matrix V by removing Vj component from the space            
-            spaceV = spaceV- (np.outer(columnVj,(spaceV[indexCurrent, :] / columnVj[indexCurrent]))); 
-            
-            #Orthonormalize (using singular value decomposition - could also use qr)
-            spaceV = orth(spaceV);
-       
+                
+		if ii <numbPointsDPP-1: 
+			#Choose a vector to eliminate
+			jj = (np.abs(spaceV[indexCurrent, :]) > 0).argmax() 
+			columnVj = spaceV[:, jj];    
+			spaceV=np.delete(spaceV,jj,1) #remove column
+			
+			#Update matrix V by removing Vj component from the space
+			print(spaceV)
+			spaceV = spaceV- (np.outer(columnVj,(spaceV[indexCurrent, :] / columnVj[indexCurrent]))); 
+			print(spaceV)
+			#Orthonormalize (using singular value decomposition - could also use qr)
+			spaceV = orth(spaceV);
+    
     #Loop finished   
     indexDPP=np.sort(indexDPP); #sort points
     #END - Simulating/sampling DPP - END
