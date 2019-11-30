@@ -81,7 +81,6 @@ numbPointsDPP= np.sum(booleEigen);  #number of points
 spaceV = eigenVectL[:, booleEigen]; #subspace V
 indexDPP=np.zeros(numbPointsDPP,dtype='int'); #index for final DPP configuration
 
-
 #Loop through for all points
 for ii in range(1):
     #Compute probabilities for each point i    
