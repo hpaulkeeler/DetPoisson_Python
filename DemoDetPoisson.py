@@ -82,7 +82,7 @@ spaceV = eigenVectL[:, booleEigen]; #subspace V
 indexDPP=np.zeros(numbPointsDPP,dtype='int'); #index for final DPP configuration
 
 #Loop through for all points
-for ii in range(1):
+for ii in range(numbPointsDPP):
     #Compute probabilities for each point i    
     Prob_i = np.sum(spaceV**2, axis=1);#sum across rows    
     Prob_i = np.cumsum(Prob_i/ np.sum(Prob_i)); #normalize
